@@ -1,0 +1,17 @@
+# AI FlowPal
+
+AI FlowPal builds practical AI workflow systems for customer-facing operations.
+
+Website: https://aiflowpal.com/
+Contact: ashevchuk@aiflowpal.com
+
+Key pages:
+- https://aiflowpal.com/ ? homepage
+- https://aiflowpal.com/ai-workflow-automation-for-small-business/ ? small business AI workflow automation
+- https://aiflowpal.com/customer-follow-up-automation/ ? customer follow-up automation
+- https://aiflowpal.com/ai-automation-consultant-toronto/ ? Toronto AI automation consulting
+- https://aiflowpal.com/immigration-consultant-ai-workflow/ ? admin workflow support for immigration consultants
+- https://aiflowpal.com/travel-agency-ai-workflow/ ? travel agency workflow support
+- https://aiflowpal.com/real-estate-lead-follow-up-automation/ ? real estate lead follow-up automation
+
+Guardrail: AI FlowPal focuses on workflow/admin support with human approval. It does not provide legal, immigration, medical, tax, insurance, travel, or financial advice.

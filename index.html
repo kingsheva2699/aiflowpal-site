@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI FlowPal — Turn Repetitive Work Into Reliable Customer Follow-Through</title>
+  <meta name="description" content="AI FlowPal builds practical AI workflow systems that help small and mid-sized teams respond faster, miss less, and give customers a smoother experience without replacing human judgment." />
+  <link rel="canonical" href="https://aiflowpal.com/" />
+  <meta property="og:title" content="AI FlowPal — AI workflow systems for better customer follow-through" />
+  <meta property="og:description" content="Respond faster, miss less, and keep customers moving with practical AI-backed workflow systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aiflowpal.com/" />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="stylesheet" href="styles.css?v=20260515-direct-form" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="author" content="AI FlowPal" />
+  <meta name="geo.region" content="CA-ON" />
+  <meta name="geo.placename" content="Toronto" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI FlowPal ? AI workflow systems for customer follow-through" />
+  <meta name="twitter:description" content="Practical AI workflow systems that help service teams respond faster, miss less, and keep customers moving." />
+  <link rel="sitemap" type="application/xml" href="https://aiflowpal.com/sitemap.xml" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://aiflowpal.com/#organization",
+        "name": "AI FlowPal",
+        "url": "https://aiflowpal.com/",
+        "email": "ashevchuk@aiflowpal.com",
+        "description": "Practical AI workflow systems for customer-facing operations, follow-up automation, intake, monitoring, reporting, and human-reviewed AI operations.",
+        "areaServed": [{"@type": "Country", "name": "Canada"}, {"@type": "AdministrativeArea", "name": "Ontario"}],
+        "founder": {"@type": "Person", "name": "Andriy Shevchuk"},
+        "serviceType": ["AI workflow automation", "Customer follow-up automation", "AI operations consulting", "Workflow audit", "Pilot system build"],
+        "sameAs": ["https://github.com/kingsheva2699/ai-cohesion-os"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aiflowpal.com/#website",
+        "url": "https://aiflowpal.com/",
+        "name": "AI FlowPal",
+        "publisher": {"@id": "https://aiflowpal.com/#organization"},
+        "inLanguage": "en-CA"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://aiflowpal.com/#faq",
+        "mainEntity": [
+          {"@type":"Question","name":"Do you only build chatbots?","acceptedAnswer":{"@type":"Answer","text":"No. Chat can be an interface, but most value comes from monitoring, routing, reporting, data cleanup, and internal decision support."}},
+          {"@type":"Question","name":"Can this work with our existing tools?","acceptedAnswer":{"@type":"Answer","text":"Usually, yes. The best systems connect to current inboxes, CRMs, docs, spreadsheets, dashboards, CMSs, and APIs instead of forcing a replacement."}},
+          {"@type":"Question","name":"How do you manage AI reliability?","acceptedAnswer":{"@type":"Answer","text":"AI FlowPal designs for reliability with confidence flags, source links, narrow scopes, logging, and human approval for important actions."}},
+          {"@type":"Question","name":"How do we start?","acceptedAnswer":{"@type":"Answer","text":"Send the customer-facing workflow your team wants to improve. AI FlowPal will assess whether it is a strong automation candidate and what a pilot should prove."}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="AI FlowPal home">
+      <span class="mark" aria-hidden="true">◆</span>
+      <span>AI FlowPal</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#services">Services</a>
+      <a href="#proof">Outcomes</a>
+      <a href="#process">Process</a>
+      <a href="#fit">Fit</a>
+      <button class="nav-cta" type="button" data-open-project onclick="document.getElementById('projectDrawer').setAttribute('aria-hidden','false');document.body.classList.add('drawer-open');setTimeout(function(){document.getElementById('projectEmail').focus();},180);">Start a project</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">AI workflow systems for customer-facing operations</p>
+        <h1>Respond faster, miss less, and keep customers moving.</h1>
+        <p class="lead">AI FlowPal helps growing teams turn repetitive inbox checks, research, reporting, and handoffs into reliable workflows — so customers get clearer answers and your team spends less time chasing scattered information.</p>
+        <div class="hero-actions">
+          <button class="button primary" type="button" data-open-project onclick="document.getElementById('projectDrawer').setAttribute('aria-hidden','false');document.body.classList.add('drawer-open');setTimeout(function(){document.getElementById('projectEmail').focus();},180);">Find the opportunity</button>
+          <a class="button secondary" href="#use-cases">See where it helps</a>
+        </div>
+        <dl class="hero-metrics" aria-label="Project focus areas">
+          <div><dt>Best starting point</dt><dd>One workflow customers feel</dd></div>
+          <div><dt>Goal</dt><dd>Faster response, fewer misses</dd></div>
+          <div><dt>Guardrail</dt><dd>Humans approve important calls</dd></div>
+        </dl>
+      </div>
+
+      <aside class="hero-panel" aria-label="Example AI operations workflow">
+        <div class="panel-top" aria-hidden="true"><span class="dot green"></span><span class="dot yellow"></span><span class="dot red"></span></div>
+        <div class="workflow-line"></div>
+        <div class="signal-card active"><span>1 · Notice</span><strong>A customer, vendor, or source changes.</strong><p>Track inboxes, portals, websites, documents, CRMs, spreadsheets, APIs, and news sources.</p></div>
+        <div class="signal-card"><span>2 · Understand</span><strong>The system explains what matters.</strong><p>Summarize, classify, score, deduplicate, and flag exceptions with source links.</p></div>
+        <div class="signal-card"><span>3 · Follow through</span><strong>The right person gets the next step.</strong><p>Send alerts, create tasks, update records, draft reports, and queue human approvals.</p></div>
+      </aside>
+    </section>
+
+    <section class="trust-strip section-shell" aria-label="Positioning statement">
+      <p><strong>The opportunity:</strong> better customer follow-through without adding another layer of busywork for your team.</p>
+    </section>
+
+    <section class="trust-strip section-shell" aria-label="Open-source credibility">
+      <p><strong>Open-source proof:</strong> AI FlowPal also publishes <a href="https://github.com/kingsheva2699/ai-cohesion-os" target="_blank" rel="noopener">AI Cohesion OS</a>, a local-first starter kit for making AI tools, project files, memory, agents, models, and workflows behave like one coherent operating system.</p>
+    </section>
+
+    <section class="section section-shell research" id="research">
+      <div class="section-head wide">
+        <p class="eyebrow">Where AI helps</p>
+        <h2>The best opportunities are usually hiding in ordinary follow-up work.</h2>
+        <p>Most teams already know where customers wait, updates get missed, or staff copy the same information between tools. AI FlowPal turns those repeatable moments into cleaner, faster operating loops.</p>
+      </div>
+      <div class="comparison-grid">
+        <article class="card good">
+          <h3>Customer-facing gains</h3>
+          <ul class="checklist">
+            <li>Inbound requests get triaged instead of sitting in a queue.</li>
+            <li>Important updates are surfaced before a customer has to ask.</li>
+            <li>Follow-ups are drafted with context, source links, and next steps.</li>
+            <li>Customer records stay cleaner across inboxes, CRMs, sheets, and portals.</li>
+            <li>Managers can see exceptions instead of manually checking everything.</li>
+            <li>People stay in control of judgment calls, approvals, and tone.</li>
+          </ul>
+        </article>
+        <article class="card bad">
+          <h3>What customers should never feel</h3>
+          <ul class="xlist">
+            <li>Waiting because nobody noticed a status change.</li>
+            <li>Repeating the same information across multiple channels.</li>
+            <li>Receiving generic AI-sounding replies without context.</li>
+            <li>Being routed to the wrong person because intake was messy.</li>
+            <li>Getting delayed by manual report assembly or spreadsheet cleanup.</li>
+            <li>Losing trust because internal handoffs are invisible.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="services">
+      <div class="section-head">
+        <p class="eyebrow">What we build</p>
+        <h2>Small workflow systems with visible customer impact.</h2>
+        <p>You do not need a giant AI transformation project. You need one customer-relevant workflow made faster, more reliable, and easier to manage.</p>
+      </div>
+      <div class="cards three">
+        <article class="card">
+          <span class="card-kicker">01</span>
+          <h3>Opportunity audit</h3>
+          <p>Find the customer-facing workflow where slow follow-up, missed updates, or scattered information is costing the most.</p>
+          <ul><li>Customer journey and tool inventory</li><li>Delay, handoff, and failure-point analysis</li><li>Automation roadmap with ROI logic</li></ul>
+        </article>
+        <article class="card featured">
+          <span class="card-kicker">02</span>
+          <h3>Pilot system build</h3>
+          <p>Build one working system that notices the right events, prepares the next step, and routes it to the right person.</p>
+          <ul><li>Monitoring and data collection</li><li>AI summaries, classification, and scoring</li><li>Human review queues and approvals</li></ul>
+        </article>
+        <article class="card">
+          <span class="card-kicker">03</span>
+          <h3>Managed workflow support</h3>
+          <p>Keep the workflow reliable as your sources, customer promises, tools, and operating needs change.</p>
+          <ul><li>Monitoring and issue response</li><li>Prompt, model, and source tuning</li><li>Monthly improvements and new integrations</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-shell proof" id="proof">
+      <div class="section-head wide">
+        <p class="eyebrow">Practical ROI</p>
+        <h2>Measure the things customers and operators both notice.</h2>
+        <p>Before anything gets built, we define what improvement would make the workflow worth keeping.</p>
+      </div>
+      <div class="outcome-grid">
+        <div><strong>Faster first response</strong><span>Inbound requests, leads, support issues, and vendor updates move into the right queue sooner.</span></div>
+        <div><strong>Fewer missed signals</strong><span>Catch source changes, client issues, travel alerts, document drops, or account risks earlier.</span></div>
+        <div><strong>Cleaner follow-through</strong><span>Reduce repeated checking, copying, summarizing, tagging, and report assembly.</span></div>
+        <div><strong>Judgment protected</strong><span>Keep source links, audit trails, confidence flags, and human approvals where needed.</span></div>
+      </div>
+    </section>
+
+    <section class="section section-shell split" id="use-cases">
+      <div>
+        <p class="eyebrow">Use cases</p>
+        <h2>Best for moments where customers are waiting on information.</h2>
+        <p>AI FlowPal is strongest when work repeats often, information changes, and timely follow-through matters more than another dashboard.</p>
+      </div>
+      <div class="use-cases">
+        <div><strong>Customer intake</strong><span>Classify requests, fill gaps, draft replies, and route customers to the right next step.</span></div>
+        <div><strong>Status monitoring</strong><span>Track portals, reviews, travel alerts, vendor changes, document drops, and account updates.</span></div>
+        <div><strong>Decision queues</strong><span>Prioritize leads, support cases, compliance reviews, renewals, and exception handling.</span></div>
+        <div><strong>Customer-ready reporting</strong><span>Create weekly summaries, source-backed briefings, client-ready drafts, and operational health checks.</span></div>
+      </div>
+    </section>
+
+    <section class="section dark" id="process">
+      <div class="section-shell">
+        <div class="section-head wide">
+          <p class="eyebrow">How it works</p>
+        <h2>Start where customers feel the delay. Prove value before scaling.</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><span>01</span><h3>Find the friction</h3><p>Inspect the customer journey, sources, handoffs, decisions, tools, and real cost of delay.</p></div>
+          <div class="step"><span>02</span><h3>Design the loop</h3><p>Choose the workflow, success metric, data boundaries, review rules, and integration points.</p></div>
+          <div class="step"><span>03</span><h3>Build the pilot</h3><p>Ship monitoring, AI processing, source evidence, draft outputs, and human approval paths.</p></div>
+          <div class="step"><span>04</span><h3>Improve the experience</h3><p>Monitor failures, tune prompts and sources, improve outputs, and expand only after value is proven.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="fit">
+      <div class="section-head">
+        <p class="eyebrow">Fit check</p>
+        <h2>Good fit if customers feel the cost of manual follow-up.</h2>
+        <p>The strongest projects have a clear business owner, a repeated customer-facing bottleneck, and existing tools we can connect instead of replacing.</p>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-card yes"><h3>Strong fit</h3><ul><li>Customers wait while staff check multiple places</li><li>Scattered data across tools and inboxes</li><li>Information changes matter commercially</li><li>No internal automation team</li><li>You want practical ROI, not AI hype</li></ul></div>
+        <div class="fit-card"><h3>Usually not a fit</h3><ul><li>There is no specific workflow to improve</li><li>No clear owner for the workflow</li><li>Source data cannot be cleaned or constrained</li><li>The task requires zero-error autonomous decisions</li><li>You need a major platform rebuild first</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section section-shell safeguards">
+      <div class="section-head">
+        <p class="eyebrow">Trust and controls</p>
+        <h2>Customers should feel helped, not handled by a bot.</h2>
+        <p>Effective AI systems make uncertainty visible. We design around evidence, review, and operational control from day one.</p>
+      </div>
+      <div class="cards four">
+        <article class="mini-card"><h3>Source-backed</h3><p>Outputs preserve links, evidence, and context wherever possible.</p></article>
+        <article class="mini-card"><h3>Human approval</h3><p>High-impact actions stay queued for review before execution.</p></article>
+        <article class="mini-card"><h3>Tool-aware</h3><p>Integrates with the systems your team already uses.</p></article>
+        <article class="mini-card"><h3>Tone-safe</h3><p>Drafts can match your standards before anyone sends them to a customer.</p></article>
+      </div>
+    </section>
+
+    <section class="section section-shell offer" id="offer">
+      <div>
+        <p class="eyebrow">Engagement model</p>
+        <h2>Start with the opportunity, not the technology.</h2>
+        <p>The first goal is to identify where better follow-through would create value quickly — or confirm that the workflow should not be automated yet.</p>
+      </div>
+      <div class="offer-list">
+        <div><strong>Audit</strong><span>Define the customer friction, sources, risks, and expected return.</span></div>
+        <div><strong>Pilot</strong><span>Build one follow-through loop with a clear success metric and review path.</span></div>
+        <div><strong>System</strong><span>Integrate alerts, records, draft replies, dashboards, and reporting.</span></div>
+        <div><strong>Support</strong><span>Keep the system reliable as sources and workflows change.</span></div>
+      </div>
+    </section>
+
+    <section class="section section-shell faq" id="faq">
+      <div class="section-head">
+        <p class="eyebrow">Questions buyers ask</p>
+        <h2>Before the first call.</h2>
+      </div>
+      <div class="faq-grid">
+        <details open><summary>Do you only build chatbots?</summary><p>No. Chat can be an interface, but most value comes from monitoring, routing, reporting, data cleanup, and internal decision support.</p></details>
+        <details><summary>Can this work with our existing tools?</summary><p>Usually, yes. The best systems connect to your current inboxes, CRMs, docs, spreadsheets, dashboards, CMSs, and APIs instead of forcing a replacement.</p></details>
+        <details><summary>How do you manage AI reliability?</summary><p>We design for reliability with confidence flags, source links, narrow scopes, logging, and human approval for important actions.</p></details>
+        <details><summary>How do we start?</summary><p>Send the customer-facing workflow your team wants to improve. We will assess whether it is a strong automation candidate and what a pilot should prove.</p></details>
+      </div>
+    </section>
+
+
+    <section class="section section-shell" id="industries">
+      <div class="section-head wide">
+        <p class="eyebrow">SEO landing pages</p>
+        <h2>Workflow automation by buyer intent and industry.</h2>
+        <p>Start with the page closest to the customer-facing bottleneck you want to fix.</p>
+      </div>
+      <div class="cards three">
+        <article class="card"><h3><a href="/ai-workflow-automation-for-small-business/">AI workflow automation for small business</a></h3><p>Practical pilots for owner-led teams and service businesses.</p></article>
+        <article class="card"><h3><a href="/customer-follow-up-automation/">Customer follow-up automation</a></h3><p>Intake, reminders, draft replies, routing, and exception queues.</p></article>
+        <article class="card"><h3><a href="/ai-automation-consultant-toronto/">AI automation consultant Toronto</a></h3><p>Local AI workflow consulting for Toronto and Ontario businesses.</p></article>
+        <article class="card"><h3><a href="/immigration-consultant-ai-workflow/">AI workflow for immigration consultants</a></h3><p>Pre-consult intake and document checklist admin support. No legal advice automation.</p></article>
+        <article class="card"><h3><a href="/travel-agency-ai-workflow/">AI workflow for travel agencies</a></h3><p>Quote, payment, guest-detail, document, and deadline follow-up support.</p></article>
+        <article class="card"><h3><a href="/real-estate-lead-follow-up-automation/">Real estate lead follow-up automation</a></h3><p>Home-evaluation, buyer/seller intake, and response reminder workflows.</p></article>
+      </div>
+    </section>
+
+    <section class="cta section-shell" id="contact">
+      <p class="eyebrow">Start with one workflow</p>
+      <h2>Where are customers waiting, repeating themselves, or falling through the cracks?</h2>
+      <p>Share the workflow. We will review whether AI can help your team respond faster, miss less, and keep control of the customer experience.</p>
+      <button class="button primary" type="button" data-open-project onclick="document.getElementById('projectDrawer').setAttribute('aria-hidden','false');document.body.classList.add('drawer-open');setTimeout(function(){document.getElementById('projectEmail').focus();},180);">Find the opportunity</button>
+      <p class="domains">aiflowpal.com · aiflowpal.ca</p>
+    </section>
+  </main>
+
+  <div class="project-drawer" id="projectDrawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close-project></div>
+    <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="projectDrawerTitle">
+      <button class="drawer-close" type="button" data-close-project aria-label="Close start a project form">×</button>
+      <p class="eyebrow">Start with one workflow</p>
+      <h2 id="projectDrawerTitle">Tell us where follow-through breaks down.</h2>
+      <p class="drawer-lead">Share where customers wait, what tools are involved, and what a better outcome would look like.</p>
+
+      <form class="drawer-form" id="projectEmailForm">
+        <label>
+          Your email
+          <input id="projectEmail" name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
+        </label>
+        <label>
+          Project details
+          <textarea id="projectMessage" name="message" placeholder="Example: Customers ask for status updates, but our team has to check multiple portals and spreadsheets first. We want changes summarized, urgent items flagged, and next steps routed for review." required></textarea>
+        </label>
+        <label>
+          Subject
+          <input id="projectSubject" name="subject" placeholder="Example: Improve our customer status-update workflow" />
+        </label>
+
+        <div class="send-choice-grid" aria-label="Choose how to send your email">
+          <button class="send-choice" type="button" data-send="gmail">
+            <span>Google</span>
+            <strong>Open Gmail</strong>
+            <small>Open Gmail with your request pre-filled.</small>
+          </button>
+          <button class="send-choice" type="button" data-send="outlook">
+            <span>Outlook</span>
+            <strong>Open Outlook</strong>
+            <small>Open Outlook with your request pre-filled.</small>
+          </button>
+          <button class="send-choice" type="button" data-send="direct">
+            <span>Send</span>
+            <strong>Send request</strong>
+            <small>Submit your request directly from this page.</small>
+          </button>
+        </div>
+        <p class="drawer-status" id="drawerStatus" role="status" aria-live="polite"></p>
+      </form>
+    </aside>
+  </div>
+
+  <iframe class="hidden-submit-frame" name="projectSubmitFrame" title="Project request submission"></iframe>
+
+  <footer class="section-shell">
+    <span>© <span id="year"></span> AI FlowPal</span>
+    <span>AI workflow systems for better customer follow-through.</span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const drawer = document.getElementById('projectDrawer');
+    const emailInput = document.getElementById('projectEmail');
+    const messageInput = document.getElementById('projectMessage');
+    const subjectInput = document.getElementById('projectSubject');
+    const statusText = document.getElementById('drawerStatus');
+    const recipient = 'hello@aiflowpal.com';
+    const directEndpoint = 'https://script.google.com/macros/s/AKfycbykXRBiDY_gJzgK6ZOdmIg8uatiNNUCLTZG1jlO5ZL-ao1ckTtW8iUrZ0ICdn4pT3twoA/exec';
+    const analyticsEndpoint = 'https://script.google.com/macros/s/AKfycbykXRBiDY_gJzgK6ZOdmIg8uatiNNUCLTZG1jlO5ZL-ao1ckTtW8iUrZ0ICdn4pT3twoA/exec';
+
+    const analytics = (() => {
+      const enabled = analyticsEndpoint && !analyticsEndpoint.includes('REPLACE_WITH');
+      const storageKey = 'aiflowpal_visitor_id';
+      const sessionKey = 'aiflowpal_session_id';
+
+      function id(prefix) {
+        return `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
+      }
+
+      function getStoredId(key, prefix, storage = localStorage) {
+        try {
+          let value = storage.getItem(key);
+          if (!value) {
+            value = id(prefix);
+            storage.setItem(key, value);
+          }
+          return value;
+        } catch (error) {
+          return id(prefix);
+        }
+      }
+
+      const visitorId = getStoredId(storageKey, 'v');
+      const sessionId = getStoredId(sessionKey, 's', sessionStorage);
+      const startedAt = Date.now();
+
+      function payload(eventName, details = {}) {
+        return {
+          action: 'analytics',
+          event: eventName,
+          details: JSON.stringify(details),
+          visitorId,
+          sessionId,
+          url: location.href,
+          path: location.pathname + location.search + location.hash,
+          title: document.title,
+          referrer: document.referrer || '',
+          language: navigator.language || '',
+          screen: `${screen.width}x${screen.height}`,
+          viewport: `${window.innerWidth}x${window.innerHeight}`,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+          userAgent: navigator.userAgent,
+          ts: new Date().toISOString()
+        };
+      }
+
+      function send(eventName, details = {}) {
+        if (!enabled) return;
+        const data = payload(eventName, details);
+        const body = new FormData();
+        Object.entries(data).forEach(([key, value]) => body.append(key, value));
+        try {
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon(analyticsEndpoint, body);
+            return;
+          }
+        } catch (error) {}
+        fetch(analyticsEndpoint, { method: 'POST', body, mode: 'no-cors', keepalive: true }).catch(() => {});
+      }
+
+      function describeElement(el) {
+        return {
+          text: (el.textContent || '').trim().slice(0, 120),
+          href: el.href || '',
+          id: el.id || '',
+          classes: el.className || '',
+          section: el.closest('section')?.id || el.closest('main, header, footer')?.tagName?.toLowerCase() || ''
+        };
+      }
+
+      return { send, describeElement, startedAt };
+    })();
+
+    function openProjectDrawer() {
+      drawer.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('drawer-open');
+      analytics.send('drawer_open', { source: 'project_cta' });
+      setTimeout(() => emailInput.focus(), 180);
+    }
+
+    function closeProjectDrawer() {
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('drawer-open');
+      analytics.send('drawer_close');
+    }
+
+    function emailParts() {
+      const senderEmail = emailInput.value.trim();
+      const subject = subjectInput.value.trim() || 'New AI FlowPal workflow opportunity';
+      const body = `Requester email: ${senderEmail}\n\n${messageInput.value.trim()}`;
+      return {
+        senderEmail,
+        rawSubject: subject,
+        rawBody: body,
+        subject: encodeURIComponent(subject),
+        body: encodeURIComponent(body)
+      };
+    }
+
+    function validateProjectForm() {
+      statusText.textContent = '';
+      if (!emailInput.checkValidity()) {
+        emailInput.reportValidity();
+        emailInput.focus();
+        return false;
+      }
+      if (!messageInput.value.trim()) {
+        messageInput.reportValidity();
+        messageInput.focus();
+        return false;
+      }
+      return true;
+    }
+
+    async function sendDirectRequest(button) {
+      const { senderEmail, rawSubject, rawBody } = emailParts();
+      button.disabled = true;
+      statusText.textContent = 'Sending your request…';
+      analytics.send('direct_form_attempt', { subject: rawSubject, messageLength: rawBody.length });
+
+      const payload = new FormData();
+      payload.append('email', senderEmail);
+      payload.append('subject', rawSubject);
+      payload.append('message', rawBody);
+
+      try {
+        await fetch(directEndpoint, {
+          method: 'POST',
+          body: payload,
+          mode: 'no-cors'
+        });
+
+        statusText.textContent = 'Request sent. We will reply to the email you provided.';
+        analytics.send('direct_form_sent', { subject: rawSubject, messageLength: rawBody.length });
+        messageInput.value = '';
+        subjectInput.value = '';
+      } catch (error) {
+        statusText.textContent = 'Something went wrong. Please use Gmail or Outlook, or email hello@aiflowpal.com directly.';
+        analytics.send('direct_form_error', { message: error.message });
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    analytics.send('page_view', {
+      landingPath: location.pathname + location.search + location.hash,
+      referrer: document.referrer || ''
+    });
+
+    window.addEventListener('beforeunload', () => {
+      analytics.send('page_exit', { secondsOnPage: Math.round((Date.now() - analytics.startedAt) / 1000) });
+    });
+
+    document.addEventListener('click', (event) => {
+      const target = event.target.closest('a, button, summary');
+      if (!target) return;
+      const info = analytics.describeElement(target);
+      if (target.matches('[data-open-project]')) analytics.send('cta_click', info);
+      else if (target.matches('[data-send]')) analytics.send('send_choice_click', { ...info, sendType: target.dataset.send });
+      else if (target.tagName === 'A' && target.href) analytics.send(target.hostname !== location.hostname ? 'outbound_link_click' : 'internal_link_click', info);
+      else analytics.send('ui_click', info);
+    });
+
+    if ('IntersectionObserver' in window) {
+      const seenSections = new Set();
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || seenSections.has(entry.target.id)) return;
+          seenSections.add(entry.target.id);
+          analytics.send('section_view', { section: entry.target.id });
+        });
+      }, { threshold: 0.45 });
+      document.querySelectorAll('section[id]').forEach((section) => observer.observe(section));
+    }
+
+    document.querySelectorAll('[data-open-project]').forEach((button) => {
+      button.addEventListener('click', openProjectDrawer);
+    });
+
+    document.querySelectorAll('[data-close-project]').forEach((button) => {
+      button.addEventListener('click', closeProjectDrawer);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') closeProjectDrawer();
+    });
+
+    document.querySelectorAll('[data-send]').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!validateProjectForm()) return;
+
+        const sendType = button.dataset.send;
+        if (sendType === 'direct') {
+          sendDirectRequest(button);
+          return;
+        }
+
+        const { subject, body } = emailParts();
+        const urls = {
+          gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`,
+          outlook: `https://outlook.live.com/mail/0/deeplink/compose?to=${recipient}&subject=${subject}&body=${body}`
+        };
+
+        window.location.href = urls[sendType];
+      });
+    });
+  </script>
+</body>
+</html>

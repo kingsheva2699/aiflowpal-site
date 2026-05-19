@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact AI FlowPal — Start a Workflow Automation Project</title>
+  <meta name="description" content="Contact AI FlowPal about workflow automation using Gmail, Outlook, your email app, or the project request form." />
+  <link rel="canonical" href="https://aiflowpal.com/email" />
+  <meta property="og:title" content="Contact AI FlowPal" />
+  <meta property="og:description" content="Start a workflow automation project with AI FlowPal." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aiflowpal.com/email" />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://aiflowpal.com/email.html" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html#top" aria-label="AI FlowPal home">
+      <span class="mark" aria-hidden="true">◆</span>
+      <span>AI FlowPal</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#proof">Outcomes</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#fit">Fit</a>
+      <a class="nav-cta" href="index.html#contact">Start a project</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="email-hero section-shell">
+      <p class="eyebrow">Contact AI FlowPal</p>
+      <h1>Tell us which workflow you want to improve.</h1>
+      <p class="lead">Use Gmail, Outlook, your email app, or the project request form. Everything goes to <strong>hello@aiflowpal.com</strong>.</p>
+      <div class="email-options" aria-label="Email options">
+        <a class="email-option" id="gmailLink" href="https://mail.google.com/mail/?view=cm&fs=1&to=hello%40aiflowpal.com&su=AI%20FlowPal%20project%20inquiry&body=Hi%20AI%20FlowPal%2C%0A%0AI%20want%20help%20with%20this%20workflow%3A%0A%0AWhat%20we%20do%20manually%20today%3A%0A%0ATools%20or%20systems%20involved%3A%0A%0AWhat%20a%20good%20outcome%20would%20look%20like%3A%0A" target="_blank" rel="noopener">
+          <span>Gmail</span>
+          <strong>Open Gmail</strong>
+          <small>Use Gmail or Google Workspace to send your request.</small>
+        </a>
+        <a class="email-option" id="outlookLink" href="https://outlook.office.com/mail/deeplink/compose?to=hello%40aiflowpal.com&subject=AI%20FlowPal%20project%20inquiry&body=Hi%20AI%20FlowPal%2C%0A%0AI%20want%20help%20with%20this%20workflow%3A%0A%0AWhat%20we%20do%20manually%20today%3A%0A%0ATools%20or%20systems%20involved%3A%0A%0AWhat%20a%20good%20outcome%20would%20look%20like%3A%0A" target="_blank" rel="noopener">
+          <span>Outlook</span>
+          <strong>Open Outlook</strong>
+          <small>Use Outlook, Hotmail, or Microsoft 365 to send your request.</small>
+        </a>
+        <a class="email-option" id="mailAppLink" href="mailto:hello@aiflowpal.com?subject=AI%20FlowPal%20project%20inquiry&body=Hi%20AI%20FlowPal%2C%0A%0AI%20want%20help%20with%20this%20workflow%3A%0A%0AWhat%20we%20do%20manually%20today%3A%0A%0ATools%20or%20systems%20involved%3A%0A%0AWhat%20a%20good%20outcome%20would%20look%20like%3A%0A">
+          <span>Email app</span>
+          <strong>Use your email app</strong>
+          <small>Open the default email app on your device.</small>
+        </a>
+      </div>
+    </section>
+
+    <section class="section section-shell email-form-section" id="send-through-us">
+      <div class="section-head wide">
+        <p class="eyebrow">Project request</p>
+        <h2>Send a concise project summary.</h2>
+        <p>Share the workflow, tools involved, and the outcome you want. We will review the request and respond by email.</p>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-grid">
+          <label>Name
+            <input name="name" autocomplete="name" placeholder="Your name" />
+          </label>
+          <label>Email
+            <input name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
+          </label>
+        </div>
+        <label>Company / team
+          <input name="company" autocomplete="organization" placeholder="Company name" />
+        </label>
+        <label>Project details
+          <textarea name="message" rows="7" placeholder="Example: We manually check vendor portals every morning, copy updates into a spreadsheet, and send a weekly report to clients." required></textarea>
+        </label>
+        <div class="form-actions">
+          <button class="button primary" type="submit">Prepare request</button>
+          <a class="button secondary" href="mailto:hello@aiflowpal.com">Use email app</a>
+        </div>
+        <p class="form-note" id="formNote" role="status">Provide enough context for an initial workflow assessment.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="section-shell">
+    <span>© <span id="year"></span> AI FlowPal</span>
+    <span><a href="index.html">Back to main site</a></span>
+  </footer>
+
+  <script>
+    const inbox = 'hello@aiflowpal.com';
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contactForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const name = (data.get('name') || '').toString().trim();
+      const email = (data.get('email') || '').toString().trim();
+      const company = (data.get('company') || '').toString().trim();
+      const message = (data.get('message') || '').toString().trim();
+
+      const subject = 'AI FlowPal project inquiry';
+      const body = [
+        'Hi AI FlowPal,',
+        '',
+        'Project details:',
+        message,
+        '',
+        name ? `Name: ${name}` : '',
+        email ? `Email: ${email}` : '',
+        company ? `Company / team: ${company}` : ''
+      ].filter(Boolean).join('\n');
+
+      window.location.href = `mailto:${inbox}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      document.getElementById('formNote').textContent = 'Opening your email app with the request prepared.';
+    });
+  </script>
+</body>
+</html>
