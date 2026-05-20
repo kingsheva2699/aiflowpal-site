@@ -356,6 +356,11 @@
       const enabled = analyticsEndpoint && !analyticsEndpoint.includes('REPLACE_WITH');
       const storageKey = 'aiflowpal_visitor_id';
       const sessionKey = 'aiflowpal_session_id';
+      const abStorageKey = 'aiflowpal_ab_homepage_v1';
+      const startedAt = Date.now();
+      const maxScroll = { value: 0 };
+      const sentMilestones = new Set();
+      const formState = { emailTouched: false, subjectTouched: false, messageTouched: false };
 
       function id(prefix) {
         return `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
@@ -374,15 +379,113 @@
         }
       }
 
+      function getAbVariant() {
+        try {
+          let variant = localStorage.getItem(abStorageKey);
+          if (!variant) {
+            variant = Math.random() < 0.5 ? 'A_control' : 'B_audit_cta';
+            localStorage.setItem(abStorageKey, variant);
+          }
+          return variant;
+        } catch (error) {
+          return Math.random() < 0.5 ? 'A_control' : 'B_audit_cta';
+        }
+      }
+
       const visitorId = getStoredId(storageKey, 'v');
       const sessionId = getStoredId(sessionKey, 's', sessionStorage);
-      const startedAt = Date.now();
+      const abTest = {
+        testId: 'homepage_hero_cta_v1',
+        variant: getAbVariant()
+      };
+      window.AIFLOWPAL_AB = abTest;
+
+      function applyAbVariant() {
+        const heroH1 = document.querySelector('.hero h1');
+        const heroLead = document.querySelector('.hero .lead');
+        const heroPrimary = document.querySelector('.hero .button.primary');
+        const navCta = document.querySelector('.nav-cta');
+        if (abTest.variant === 'B_audit_cta') {
+          if (heroH1) heroH1.textContent = 'Turn missed follow-ups into a reliable customer response system.';
+          if (heroLead) heroLead.textContent = 'AI FlowPal helps growing teams find the inbox checks, handoffs, research, and reporting steps that slow customers down - then turns one high-value workflow into a human-reviewed operating loop.';
+          if (heroPrimary) heroPrimary.textContent = 'Get a workflow audit';
+          if (navCta) navCta.textContent = 'Get a workflow audit';
+        }
+      }
+
+      applyAbVariant();
+
+      function parseTraffic() {
+        const params = new URLSearchParams(location.search);
+        const ref = document.referrer || '';
+        let refHost = '';
+        try { refHost = ref ? new URL(ref).hostname : ''; } catch (error) {}
+        const utm = {};
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid', 'msclkid'].forEach((key) => {
+          if (params.get(key)) utm[key] = params.get(key).slice(0, 300);
+        });
+        let channel = 'direct';
+        if (Object.keys(utm).length) channel = 'campaign';
+        else if (refHost) {
+          if (/google|bing|duckduckgo|yahoo|ecosia|yandex/i.test(refHost)) channel = 'organic_search';
+          else if (/github|linkedin|facebook|instagram|x\.com|twitter|reddit|t\.co/i.test(refHost)) channel = 'social_referral';
+          else channel = 'referral';
+        }
+        return { refHost, channel, utm };
+      }
+
+      function deviceInfo() {
+        const nav = navigator || {};
+        const conn = nav.connection || nav.mozConnection || nav.webkitConnection || {};
+        return {
+          language: nav.language || '',
+          languages: Array.isArray(nav.languages) ? nav.languages.slice(0, 5).join(',') : '',
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+          screen: `${screen.width}x${screen.height}`,
+          viewport: `${window.innerWidth}x${window.innerHeight}`,
+          colorDepth: screen.colorDepth || '',
+          pixelRatio: window.devicePixelRatio || 1,
+          platform: nav.platform || '',
+          hardwareConcurrency: nav.hardwareConcurrency || '',
+          deviceMemory: nav.deviceMemory || '',
+          touchPoints: nav.maxTouchPoints || 0,
+          connectionType: conn.effectiveType || '',
+          saveData: !!conn.saveData,
+          cookiesEnabled: navigator.cookieEnabled,
+          doNotTrack: navigator.doNotTrack || window.doNotTrack || '',
+          userAgent: nav.userAgent || ''
+        };
+      }
+
+      function pagePerformance() {
+        const navEntry = performance.getEntriesByType?.('navigation')?.[0];
+        if (!navEntry) return {};
+        return {
+          type: navEntry.type,
+          domContentLoadedMs: Math.round(navEntry.domContentLoadedEventEnd),
+          loadMs: Math.round(navEntry.loadEventEnd),
+          transferSize: navEntry.transferSize || '',
+          encodedBodySize: navEntry.encodedBodySize || ''
+        };
+      }
 
       function payload(eventName, details = {}) {
+        const enrichedDetails = {
+          url: location.href,
+          query: location.search || '',
+          hash: location.hash || '',
+          traffic: parseTraffic(),
+          device: deviceInfo(),
+          performance: eventName === 'page_view' ? pagePerformance() : undefined,
+          abTest,
+          secondsOnPage: Math.round((Date.now() - startedAt) / 1000),
+          maxScrollPercent: maxScroll.value,
+          ...details
+        };
         return {
           action: 'analytics',
           event: eventName,
-          details: JSON.stringify(details),
+          details: JSON.stringify(enrichedDetails),
           visitorId,
           sessionId,
           url: location.href,
@@ -404,17 +507,14 @@
         const body = new FormData();
         Object.entries(data).forEach(([key, value]) => body.append(key, value));
         try {
-          if (navigator.sendBeacon) {
-            navigator.sendBeacon(analyticsEndpoint, body);
-            return;
-          }
+          if (navigator.sendBeacon && navigator.sendBeacon(analyticsEndpoint, body)) return;
         } catch (error) {}
         fetch(analyticsEndpoint, { method: 'POST', body, mode: 'no-cors', keepalive: true }).catch(() => {});
       }
 
       function describeElement(el) {
         return {
-          text: (el.textContent || '').trim().slice(0, 120),
+          text: (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 180),
           href: el.href || '',
           id: el.id || '',
           classes: el.className || '',
@@ -422,7 +522,13 @@
         };
       }
 
-      return { send, describeElement, startedAt };
+      function markFormTouched(field) {
+        if (formState[field]) return;
+        formState[field] = true;
+        send('form_field_start', { field });
+      }
+
+      return { send, describeElement, startedAt, maxScroll, sentMilestones, markFormTouched, abTest };
     })();
 
     function openProjectDrawer() {
@@ -501,8 +607,33 @@
       referrer: document.referrer || ''
     });
 
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const scrollable = Math.max(1, doc.scrollHeight - window.innerHeight);
+      const pct = Math.max(0, Math.min(100, Math.round((window.scrollY / scrollable) * 100)));
+      if (pct > analytics.maxScroll.value) analytics.maxScroll.value = pct;
+      [25, 50, 75, 90].forEach((milestone) => {
+        if (pct >= milestone && !analytics.sentMilestones.has(milestone)) {
+          analytics.sentMilestones.add(milestone);
+          analytics.send('scroll_depth', { milestone });
+        }
+      });
+    }, { passive: true });
+
+    [
+      [emailInput, 'email'],
+      [subjectInput, 'subject'],
+      [messageInput, 'message']
+    ].forEach(([input, field]) => {
+      input.addEventListener('focus', () => analytics.markFormTouched(field));
+      input.addEventListener('input', () => analytics.markFormTouched(field));
+    });
+
     window.addEventListener('beforeunload', () => {
-      analytics.send('page_exit', { secondsOnPage: Math.round((Date.now() - analytics.startedAt) / 1000) });
+      analytics.send('page_exit', {
+        secondsOnPage: Math.round((Date.now() - analytics.startedAt) / 1000),
+        maxScrollPercent: analytics.maxScroll.value
+      });
     });
 
     document.addEventListener('click', (event) => {
