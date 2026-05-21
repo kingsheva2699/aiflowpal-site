@@ -1,12 +1,12 @@
 # AI FlowPal
 
-AI FlowPal builds custom operator-led AI workflow systems for customer-facing operations. The service starts by understanding how each business actually works, deciding what should stay human, and using AI as leverage for monitoring, summaries, drafts, routing, evidence notes, and review queues.
+AI FlowPal builds unique AI workflow systems for unique businesses. The service starts by mapping how each business actually works - customers, tools, team rules, approvals, and promises - then uses AI as leverage for monitoring, summaries, drafts, routing, evidence notes, and review queues while human judgment stays in control.
 
 Website: https://aiflowpal.com/
 Contact: hello@aiflowpal.com
 
 Key pages:
-- https://aiflowpal.com/ - custom operator-led AI workflow systems
+- https://aiflowpal.com/ - unique AI systems for unique businesses
 - https://aiflowpal.com/ai-workflow-automation-for-small-business/ - small business workflow fit repair
 - https://aiflowpal.com/customer-follow-up-automation/ - customer follow-up workflow repair
 - https://aiflowpal.com/ai-automation-consultant-toronto/ - Toronto AI automation consulting

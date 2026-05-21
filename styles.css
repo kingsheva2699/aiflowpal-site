@@ -2879,3 +2879,17 @@ footer.section-shell { padding-bottom: 92px; }
     max-width: 34ch;
   }
 }
+
+/* Mobile unique-message headline fit - 2026-05-21
+   Keep the target-audience hero readable on 360px phones without clipping words. */
+@media (max-width: 520px) {
+  .operator-hero h1 {
+    max-width: 100%;
+    font-size: clamp(29px, 8.6vw, 34px);
+    line-height: 1.07;
+    letter-spacing: -.026em;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: balance;
+  }
+}
