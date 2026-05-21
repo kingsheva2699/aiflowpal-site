@@ -1,17 +1,18 @@
 # AI FlowPal
 
-AI FlowPal builds practical AI workflow systems for customer-facing operations.
+AI FlowPal builds operator-led AI workflow systems for customer-facing operations. The service starts by finding a workflow leak, deciding what should stay human, and using AI as leverage for monitoring, summaries, drafts, routing, evidence notes, and review queues.
 
 Website: https://aiflowpal.com/
-Contact: ashevchuk@aiflowpal.com
+Contact: hello@aiflowpal.com
 
 Key pages:
-- https://aiflowpal.com/ ? homepage
-- https://aiflowpal.com/ai-workflow-automation-for-small-business/ ? small business AI workflow automation
-- https://aiflowpal.com/customer-follow-up-automation/ ? customer follow-up automation
-- https://aiflowpal.com/ai-automation-consultant-toronto/ ? Toronto AI automation consulting
-- https://aiflowpal.com/immigration-consultant-ai-workflow/ ? admin workflow support for immigration consultants
-- https://aiflowpal.com/travel-agency-ai-workflow/ ? travel agency workflow support
-- https://aiflowpal.com/real-estate-lead-follow-up-automation/ ? real estate lead follow-up automation
+- https://aiflowpal.com/ - operator-led AI workflow systems
+- https://aiflowpal.com/ai-workflow-automation-for-small-business/ - small business workflow leak repair
+- https://aiflowpal.com/customer-follow-up-automation/ - customer follow-up workflow repair
+- https://aiflowpal.com/ai-automation-consultant-toronto/ - Toronto AI automation consulting
+- https://aiflowpal.com/immigration-consultant-ai-workflow/ - admin workflow support for immigration consultants
+- https://aiflowpal.com/travel-agency-ai-workflow/ - travel agency workflow support
+- https://aiflowpal.com/real-estate-lead-follow-up-automation/ - real estate lead follow-up workflow support
+- https://aiflowpal.com/ei-biweekly-report/ - EI biweekly report workflow support page
 
-Guardrail: AI FlowPal focuses on workflow/admin support with human approval. It does not provide legal, immigration, medical, tax, insurance, travel, or financial advice.
+Guardrail: AI FlowPal focuses on workflow/admin support with human approval. It does not provide legal, immigration, medical, tax, insurance, travel, or financial advice. External/customer-facing actions and sensitive decisions should stay human-reviewed.
