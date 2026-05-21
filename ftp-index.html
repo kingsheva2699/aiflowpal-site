@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://aiflowpal.com/" />
   <meta name="theme-color" content="#050d1a" />
-  <link rel="stylesheet" href="styles.css?v=20260521-unique-ai-systems-v2" />
+  <link rel="stylesheet" href="styles.css?v=20260521-mobile-form-fit" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="author" content="AI FlowPal" />
   <meta name="geo.region" content="CA-ON" />
@@ -69,7 +69,7 @@
       <a href="#proof">Outcomes</a>
       <a href="#process">Process</a>
       <a href="#fit">Fit</a>
-      <button class="nav-cta" type="button" data-open-project onclick="document.getElementById('projectDrawer').setAttribute('aria-hidden','false');document.body.classList.add('drawer-open');setTimeout(function(){document.getElementById('projectEmail').focus();},180);">Start a project</button>
+      <button class="nav-cta" type="button" data-open-project>Start a project</button>
     </nav>
   </header>
 
@@ -174,7 +174,7 @@
         <h1>Your business is unique. Your AI should be too.</h1>
         <p class="lead">AI FlowPal maps how your team actually works: customers, tools, approvals, promises, and repeated bottlenecks. Then it builds a practical AI workflow system around that shape.</p>
         <div class="hero-actions">
-          <button class="button primary" type="button" data-open-project onclick="document.getElementById('projectDrawer').setAttribute('aria-hidden','false');document.body.classList.add('drawer-open');setTimeout(function(){document.getElementById('projectEmail').focus();},180);">Map my AI system</button>
+          <button class="button primary" type="button" data-open-project>Map my AI system</button>
           <a class="button secondary" href="#operator">See the approach</a>
         </div>
         <p class="quiet-proof-line"><strong>No generic AI template.</strong> Your tools, team, approvals, and customer promises become the blueprint.</p>
@@ -374,7 +374,7 @@
       <p class="eyebrow">Start with your workflow</p>
       <h2>Show us what makes your business different.</h2>
       <p>Share the workflow, tools, team rules, customer promise, and repeated bottleneck. The first step is mapping the AI system around your business, not forcing you into a template.</p>
-      <button class="button primary" type="button" data-open-project onclick="document.getElementById('projectDrawer').setAttribute('aria-hidden','false');document.body.classList.add('drawer-open');setTimeout(function(){document.getElementById('projectEmail').focus();},180);">Map my AI system</button>
+      <button class="button primary" type="button" data-open-project>Map my AI system</button>
       <p class="domains">aiflowpal.com - aiflowpal.ca</p>
     </section>
   </main>
@@ -617,15 +617,56 @@
       return { send, describeElement, startedAt, maxScroll, sentMilestones, markFormTouched, abTest };
     })();
 
+    const mobileDrawerQuery = window.matchMedia('(max-width: 760px)');
+
+    function setMobileViewportHeight() {
+      const viewport = window.visualViewport;
+      const height = viewport ? viewport.height : window.innerHeight;
+      document.documentElement.style.setProperty('--mobile-viewport-height', `${Math.round(height)}px`);
+    }
+
+    function keepDrawerFieldVisible(field) {
+      if (!mobileDrawerQuery.matches) return;
+      setMobileViewportHeight();
+      drawer.classList.add('typing-focus');
+      [90, 340].forEach((delay) => {
+        setTimeout(() => field.scrollIntoView({ block: 'center', behavior: 'smooth' }), delay);
+      });
+    }
+
+    function clearDrawerFieldFocus() {
+      setTimeout(() => {
+        const active = document.activeElement;
+        if (!active || !active.matches('.drawer-form input, .drawer-form textarea')) {
+          drawer.classList.remove('typing-focus');
+        }
+      }, 140);
+    }
+
+    setMobileViewportHeight();
+    window.addEventListener('resize', setMobileViewportHeight, { passive: true });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', setMobileViewportHeight, { passive: true });
+      window.visualViewport.addEventListener('scroll', setMobileViewportHeight, { passive: true });
+    }
+
     function openProjectDrawer() {
       drawer.setAttribute('aria-hidden', 'false');
       document.body.classList.add('drawer-open');
+      setMobileViewportHeight();
       analytics.send('drawer_open', { source: 'project_cta' });
-      setTimeout(() => emailInput.focus(), 180);
+      setTimeout(() => {
+        if (mobileDrawerQuery.matches) {
+          drawer.querySelector('.drawer-panel')?.scrollTo({ top: 0, behavior: 'auto' });
+        } else {
+          emailInput.focus();
+        }
+      }, 180);
     }
 
     function closeProjectDrawer() {
       drawer.setAttribute('aria-hidden', 'true');
+      drawer.classList.remove('typing-focus');
       document.body.classList.remove('drawer-open');
       analytics.send('drawer_close');
     }
@@ -711,8 +752,15 @@
       [subjectInput, 'subject'],
       [messageInput, 'message']
     ].forEach(([input, field]) => {
-      input.addEventListener('focus', () => analytics.markFormTouched(field));
-      input.addEventListener('input', () => analytics.markFormTouched(field));
+      input.addEventListener('focus', () => {
+        analytics.markFormTouched(field);
+        keepDrawerFieldVisible(input);
+      });
+      input.addEventListener('input', () => {
+        analytics.markFormTouched(field);
+        keepDrawerFieldVisible(input);
+      });
+      input.addEventListener('blur', clearDrawerFieldFocus);
     });
 
     window.addEventListener('beforeunload', () => {

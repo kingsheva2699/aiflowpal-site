@@ -2893,3 +2893,198 @@ footer.section-shell { padding-bottom: 92px; }
     text-wrap: balance;
   }
 }
+
+
+/* Mobile drawer typing-box fit - 2026-05-21
+   Keep the start-project form usable when the phone keyboard opens. */
+:root { --mobile-viewport-height: 100vh; }
+@supports (height: 100dvh) {
+  :root { --mobile-viewport-height: 100dvh; }
+}
+
+@media (max-width: 760px) {
+  body.drawer-open {
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  .project-drawer {
+    height: var(--mobile-viewport-height, 100dvh);
+    overflow: hidden;
+  }
+
+  .drawer-panel {
+    inset: 0;
+    width: 100%;
+    height: var(--mobile-viewport-height, 100dvh);
+    max-height: var(--mobile-viewport-height, 100dvh);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: calc(16px + env(safe-area-inset-top)) 14px calc(112px + env(safe-area-inset-bottom));
+  }
+
+  .drawer-close {
+    position: sticky;
+    top: 10px;
+    right: auto;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-bottom: 2px;
+    background: rgba(6,16,30,.84);
+    backdrop-filter: blur(12px);
+  }
+
+  .drawer-panel h2 {
+    margin-right: 0;
+    font-size: clamp(27px, 8vw, 34px);
+    line-height: 1.06;
+  }
+
+  .drawer-lead,
+  .drawer-guardrail,
+  .drawer-proof-note {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .drawer-human-cues {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .drawer-form {
+    margin-top: 16px;
+    padding-bottom: 44px;
+  }
+
+  .drawer-form label {
+    margin-top: 13px;
+  }
+
+  .drawer-form textarea,
+  .drawer-form input {
+    min-width: 0;
+    font-size: 16px;
+    line-height: 1.45;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .drawer-form textarea {
+    min-height: clamp(136px, 32svh, 190px);
+    max-height: 42vh;
+    resize: vertical;
+  }
+
+  .send-choice-grid {
+    gap: 10px;
+  }
+
+  .send-choice {
+    min-height: auto;
+    padding: 14px;
+  }
+
+  .send-choice span {
+    margin-bottom: 10px;
+  }
+
+  .send-choice small {
+    font-size: 13px;
+  }
+
+  .drawer-status {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .project-drawer.typing-focus .drawer-panel {
+    padding-bottom: calc(164px + env(safe-area-inset-bottom));
+  }
+
+  .project-drawer.typing-focus .drawer-proof-note,
+  .project-drawer.typing-focus .drawer-human-cues {
+    display: none;
+  }
+
+  .project-drawer.typing-focus .drawer-guardrail {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+
+  .project-drawer.typing-focus .drawer-form textarea {
+    min-height: 150px;
+  }
+}
+
+/* Mobile drawer opacity/scroll hardening - 2026-05-21
+   Override earlier decorative mobile containment so the form is an opaque, scrollable panel. */
+@media (max-width: 760px) {
+  .project-drawer[aria-hidden="false"] {
+    z-index: 999 !important;
+  }
+
+  .project-drawer[aria-hidden="false"] .drawer-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    background: linear-gradient(180deg, #071426 0%, #06101e 54%, #050d1a 100%) !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+
+  .drawer-panel > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .drawer-form textarea,
+  .drawer-form input {
+    background: rgba(3, 10, 20, .97) !important;
+    color: #f4f8ff !important;
+    text-shadow: none !important;
+    caret-color: var(--trust);
+  }
+
+  .drawer-form textarea::placeholder,
+  .drawer-form input::placeholder {
+    color: rgba(201,216,235,.54) !important;
+  }
+
+  .project-drawer.typing-focus .eyebrow,
+  .project-drawer.typing-focus #projectDrawerTitle,
+  .project-drawer.typing-focus .drawer-lead,
+  .project-drawer.typing-focus .drawer-guardrail {
+    display: none;
+  }
+
+  .project-drawer.typing-focus .drawer-form {
+    margin-top: 4px;
+  }
+}
+
+/* Mobile drawer compact actions while typing - 2026-05-21 */
+@media (max-width: 760px) {
+  .project-drawer.typing-focus .send-choice-grid {
+    gap: 8px;
+  }
+
+  .project-drawer.typing-focus .send-choice {
+    padding: 12px 13px;
+  }
+
+  .project-drawer.typing-focus .send-choice span,
+  .project-drawer.typing-focus .send-choice small {
+    display: none;
+  }
+
+  .project-drawer.typing-focus .send-choice strong {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+}
