@@ -2853,3 +2853,29 @@ footer.section-shell { padding-bottom: 92px; }
   #contact { scroll-margin-top: 112px; }
   footer.section-shell { padding-bottom: 142px; }
 }
+
+/* Mobile hero containment/tightening - 2026-05-21
+   Fix from phone screenshot: keep the first viewport clean, deterministic, and clipped to the hero box. */
+@media (max-width: 520px) {
+  .operator-hero {
+    isolation: isolate;
+    overflow: hidden !important;
+  }
+  .operator-hero .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+  .operator-hero .hero-panel {
+    position: relative;
+    z-index: 1;
+    overflow: hidden !important;
+  }
+  .operator-hero h1 {
+    font-size: clamp(34px, 10vw, 42px);
+    line-height: 1.01;
+    letter-spacing: -.045em;
+  }
+  .operator-hero .lead {
+    max-width: 34ch;
+  }
+}
