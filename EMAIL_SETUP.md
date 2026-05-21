@@ -71,18 +71,23 @@ After mail is stable, tighten `p=none` to `p=quarantine`, then eventually `p=rej
   - default mail app
   - a simple project request form fallback
 - `index.html` includes the primary “Start a project” slide-out composer.
-- The slide-out composer posts direct submissions to a Google Apps Script web app and sends them to `hello@aiflowpal.com`.
+- The slide-out composer posts direct submissions to a Google Apps Script web app. Visitor-facing copy uses `hello@aiflowpal.com`; direct website submissions deliver to the real login mailbox `ashevchuk@aiflowpal.com`.
 
 ## Direct website submissions
 
 Direct “Send request” delivery is handled by Google Apps Script:
 
-- Script project: `1iw3F4y-JdAfn_R1nsg7-hm7Vy_7AB_qZjfhsW-6pbyNZoetqydREV0QQ`
-- Web app URL: `https://script.google.com/macros/s/AKfycbw_Gibxexz3tznNll1B1JJdS7lcA-cibRD3IwGND-Xifn_Sm1FYHXsiktPiEnxo1c4_5Q/exec`
-- Recipient in script: `hello@aiflowpal.com`
+- Script project: `1LGrBDNo9ExcXGQBrXyNtj7D9QHVAR7MGtoMtUSFE2IK17DWgRH3-rFCl`
+- Web app URL: `https://script.google.com/macros/s/AKfycbykXRBiDY_gJzgK6ZOdmIg8uatiNNUCLTZG1jlO5ZL-ao1ckTtW8iUrZ0ICdn4pT3twoA/exec`
+- Recipient in script: `ashevchuk@aiflowpal.com` for the direct website submit path, while the public alias remains `hello@aiflowpal.com` in visitor-facing copy. This bypasses alias/login confusion for direct submissions.
 - Website handler: `sendDirectRequest(button)` in `index.html`
+- Contact attempts are logged to the `contacts` sheet in the AI FlowPal Website Analytics spreadsheet.
 
-Validated on 2026-05-15:
+Validated on 2026-05-21:
 
-- Direct POST to the Apps Script endpoint returned `{"ok":true}`.
+- Deployed active web app as Version 2 while preserving the existing `/exec` URL.
+- Endpoint GET returned live JSON with the analytics sheet URL.
+- Direct POST returned `{"ok":true,"deliveredTo":"ashevchuk@aiflowpal.com","publicAlias":"hello@aiflowpal.com"}`.
 - Live `https://aiflowpal.com/` form showed `Request sent. We will reply to the email you provided.` after submission.
+- Gmail received the live test email in `ashevchuk@aiflowpal.com`.
+- The `contacts` sheet logged the live test row.

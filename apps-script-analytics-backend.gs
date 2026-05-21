@@ -2,7 +2,10 @@
 // Deploy as a Google Apps Script web app: Execute as Me, Anyone can access.
 // After deploying, paste the /exec URL into index.html as analyticsEndpoint.
 
-const CONTACT_TO = 'hello@aiflowpal.com';
+// Public visitors still see hello@aiflowpal.com, but direct website submissions
+// deliver to the real login mailbox to avoid alias/inbox confusion.
+const CONTACT_TO = 'ashevchuk@aiflowpal.com';
+const PUBLIC_CONTACT_ALIAS = 'hello@aiflowpal.com';
 const SHEET_PROP = 'AIFLOWPAL_ANALYTICS_SHEET_ID';
 const ANALYTICS_HEADERS = [
   'receivedAt',
@@ -18,6 +21,14 @@ const ANALYTICS_HEADERS = [
   'viewport',
   'timezone',
   'userAgent'
+];
+const CONTACT_HEADERS = [
+  'receivedAt',
+  'replyTo',
+  'subject',
+  'messageLength',
+  'deliveredTo',
+  'publicAlias'
 ];
 
 function doPost(e) {
@@ -42,16 +53,31 @@ function sendContact_(params) {
 
   MailApp.sendEmail({
     to: CONTACT_TO,
+    name: 'AI FlowPal Website',
     replyTo: email,
     subject,
     body: message
   });
 
-  return json_({ ok: true });
+  logContact_(email, subject, message);
+
+  return json_({ ok: true, deliveredTo: CONTACT_TO, publicAlias: PUBLIC_CONTACT_ALIAS });
+}
+
+function logContact_(email, subject, message) {
+  const sheet = getSheet_('contacts', CONTACT_HEADERS);
+  sheet.appendRow([
+    new Date(),
+    clean_(email),
+    clean_(subject),
+    String(message || '').length,
+    CONTACT_TO,
+    PUBLIC_CONTACT_ALIAS
+  ]);
 }
 
 function logAnalytics_(params) {
-  const sheet = getAnalyticsSheet_();
+  const sheet = getSheet_('events', ANALYTICS_HEADERS);
   sheet.appendRow([
     new Date(),
     clean_(params.event),
@@ -71,6 +97,10 @@ function logAnalytics_(params) {
 }
 
 function getAnalyticsSheet_() {
+  return getSheet_('events', ANALYTICS_HEADERS);
+}
+
+function getSheet_(sheetName, headers) {
   const props = PropertiesService.getScriptProperties();
   let sheetId = props.getProperty(SHEET_PROP);
   let spreadsheet;
@@ -82,10 +112,10 @@ function getAnalyticsSheet_() {
     props.setProperty(SHEET_PROP, spreadsheet.getId());
   }
 
-  let sheet = spreadsheet.getSheetByName('events');
-  if (!sheet) sheet = spreadsheet.insertSheet('events');
+  let sheet = spreadsheet.getSheetByName(sheetName);
+  if (!sheet) sheet = spreadsheet.insertSheet(sheetName);
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(ANALYTICS_HEADERS);
+    sheet.appendRow(headers);
     sheet.setFrozenRows(1);
   }
   return sheet;
