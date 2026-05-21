@@ -10,6 +10,19 @@ node server.js
 
 Open http://localhost:4180
 
+## Google Analytics
+
+GA4 is installed across the public HTML pages.
+
+- Account: `AI FlowPal`
+- Property: `AI FlowPal Website`
+- Account ID: `395428176`
+- Property ID: `538507281`
+- Web stream: `AI FlowPal Website` / `https://aiflowpal.com`
+- Stream ID: `14924101100`
+- Measurement ID: `G-FZ6X71N7KY`
+- Setup verification: Google tag installation test passed, and Realtime showed active users after live deployment.
+
 ## Design psychology pass - 2026-05-20
 
 Local-only update applying AI FlowPal's design/psychology research:
