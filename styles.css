@@ -2232,3 +2232,624 @@ main { overflow-x: hidden; }
     transform: rotate(-4deg);
   }
 }
+
+/* Hyper-abstract rising sun + pathing web background - 2026-05-21
+   Direction: warm clean colours, sun-as-origin point, and a shadow-textured pathing web
+   emanating through dispersed nodes. Keep it abstract and architectural, not literal. */
+body {
+  background:
+    radial-gradient(ellipse at 22% 13%, rgba(255,226,154,.24), transparent 27%),
+    radial-gradient(ellipse at 30% 2%, rgba(255,179,138,.16), transparent 24%),
+    linear-gradient(132deg, rgba(255,179,138,.17) 0%, transparent 22%),
+    linear-gradient(218deg, rgba(104,213,255,.14) 0%, transparent 30%),
+    linear-gradient(90deg, rgba(185,156,255,.075), transparent 48%),
+    linear-gradient(180deg, #07111f 0%, #0b1728 48%, #050a13 100%);
+}
+
+body::before {
+  opacity: .42;
+  background:
+    radial-gradient(circle at 24% 25%, rgba(255,242,191,.18), transparent 0 16%, transparent 34%),
+    linear-gradient(115deg, transparent 0 18%, rgba(255,226,154,.10) 18.05% 18.35%, transparent 18.5% 100%),
+    linear-gradient(62deg, transparent 0 40%, rgba(255,179,138,.085) 40.05% 40.35%, transparent 40.5% 100%),
+    linear-gradient(151deg, transparent 0 70%, rgba(104,213,255,.060) 70.05% 70.35%, transparent 70.5% 100%);
+}
+
+.shape-web.rising-sun-web {
+  top: 8px;
+  width: min(1580px, 124vw);
+  height: min(790px, 82vw);
+  opacity: .56;
+}
+
+.shape-web.rising-sun-web svg {
+  filter: drop-shadow(0 30px 84px rgba(0,0,0,.30));
+}
+
+.shape-web.rising-sun-web::before {
+  inset: 74px 6% 8% 4%;
+  opacity: .42;
+  border-color: rgba(255,226,154,.09);
+  background:
+    linear-gradient(90deg, rgba(255,226,154,.080) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(205,220,236,.045) 1px, transparent 1px),
+    linear-gradient(135deg, transparent 0 calc(50% - 1px), rgba(255,179,138,.105) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px));
+  background-size: 78px 78px, 78px 78px, 228px 228px;
+}
+
+.rising-sun-field,
+.path-shadow-web,
+.path-light-web,
+.sun-node-cloud {
+  transform-box: fill-box;
+  transform-origin: 286px 488px;
+}
+
+.rising-sun-aura {
+  fill: url(#risingSunAura);
+  opacity: .88;
+  mix-blend-mode: screen;
+}
+
+.rising-sun-core {
+  fill: url(#risingSunCore);
+  opacity: .72;
+  filter: url(#sunSoft);
+  mix-blend-mode: screen;
+}
+
+.sun-horizon {
+  fill: none;
+  stroke: rgba(255,242,191,.42);
+  stroke-width: 1.4;
+  stroke-linecap: square;
+  vector-effect: non-scaling-stroke;
+  opacity: .56;
+}
+
+.sun-arc,
+.sun-ray {
+  fill: none;
+  stroke: url(#sunArcWarm);
+  vector-effect: non-scaling-stroke;
+  mix-blend-mode: screen;
+}
+
+.sun-arc {
+  stroke-width: 1.05;
+  opacity: .34;
+  stroke-dasharray: 18 20;
+}
+
+.sun-arc.arc-b { opacity: .42; stroke-dasharray: 26 18; }
+.sun-arc.arc-c { opacity: .50; stroke-dasharray: 34 16; }
+.sun-arc.arc-d { opacity: .58; stroke-dasharray: 42 12; }
+
+.sun-ray {
+  stroke-width: .9;
+  opacity: .18;
+  stroke-dasharray: 42 34;
+}
+
+.path-shadow-web path {
+  fill: none;
+  stroke: rgba(1,7,18,.62);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: .34;
+  filter: url(#webShadowBlur);
+}
+
+.path-light-web path {
+  fill: none;
+  stroke: url(#pathGlow);
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  opacity: .58;
+  filter: drop-shadow(0 0 10px rgba(255,209,102,.08));
+}
+
+.path-light-web path.secondary {
+  stroke: rgba(255,255,255,.15);
+  stroke-width: .85;
+  opacity: .46;
+  stroke-dasharray: 9 17;
+}
+
+.sun-node {
+  vector-effect: non-scaling-stroke;
+  stroke-width: .8;
+  filter: drop-shadow(0 0 10px rgba(255,226,154,.14));
+}
+
+.sun-node.source {
+  fill: rgba(255,249,223,.94);
+  stroke: rgba(255,209,102,.84);
+  filter: drop-shadow(0 0 18px rgba(255,209,102,.34));
+}
+
+.sun-node.warm { fill: rgba(255,209,102,.84); stroke: rgba(255,179,138,.64); }
+.sun-node.bridge { fill: rgba(185,156,255,.72); stroke: rgba(255,242,191,.42); }
+.sun-node.cool { fill: rgba(104,213,255,.78); stroke: rgba(215,247,255,.58); }
+.sun-node.tiny { opacity: .76; }
+
+.operator-hero {
+  padding-block-start: clamp(72px, 10vw, 132px);
+}
+
+.operator-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 9% auto auto -4%;
+  width: min(520px, 48vw);
+  height: min(420px, 42vw);
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 44% 58%, rgba(255,242,191,.18), transparent 56%),
+    radial-gradient(ellipse at 38% 60%, rgba(255,179,138,.11), transparent 70%);
+  clip-path: polygon(0 42%, 100% 0, 86% 86%, 8% 100%);
+  filter: blur(2px);
+  opacity: .72;
+}
+
+@media (max-width: 900px) {
+  .shape-web.rising-sun-web {
+    top: 60px;
+    width: 154vw;
+    height: 560px;
+    opacity: .46;
+    left: 48%;
+  }
+  .operator-hero::before { opacity: .42; }
+}
+
+@media (max-width: 520px) {
+  .shape-web.rising-sun-web {
+    top: 82px;
+    left: 50%;
+    width: 178vw;
+    height: 430px;
+    opacity: .34;
+    overflow: hidden;
+  }
+  .shape-web.rising-sun-web::before {
+    inset: 54px 16px 20% 18px;
+    background-size: 58px 58px, 58px 58px, 174px 174px;
+  }
+  .operator-hero { padding-block-start: 54px; }
+}
+
+/* Rising-sun mirror + stronger overlay panel - 2026-05-21 */
+.shape-web.rising-sun-web svg {
+  transform: scaleX(-1);
+  transform-origin: center;
+}
+
+.shape-web.rising-sun-web::before {
+  opacity: .66;
+  border-color: rgba(255,226,154,.16);
+}
+
+.hero-panel.operator-notes {
+  background: linear-gradient(180deg, rgba(13,27,47,.88), rgba(7,17,31,.80)) !important;
+  border-color: rgba(255,226,154,.26) !important;
+}
+
+.hero-panel.operator-notes .signal-card {
+  background: linear-gradient(180deg, rgba(8,18,32,.78), rgba(5,12,23,.68)) !important;
+}
+
+.hero-panel.operator-notes .signal-card.active {
+  background: linear-gradient(180deg, rgba(25,58,76,.72), rgba(8,20,35,.70)) !important;
+}
+
+.hero-panel.operator-notes .signal-card.review {
+  background: linear-gradient(180deg, rgba(72,55,26,.70), rgba(18,22,29,.72)) !important;
+}
+
+.hero-panel.operator-notes .signal-card.handled {
+  background: linear-gradient(180deg, rgba(18,58,48,.66), rgba(8,20,28,.72)) !important;
+}
+
+/* AI leverage map report fix + green streetlight subwiring - 2026-05-21 */
+.node-system {
+  border-color: rgba(110,231,168,.26) !important;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255,179,138,.18), transparent 38%),
+    radial-gradient(circle at 72% 20%, rgba(104,213,255,.16), transparent 38%),
+    radial-gradient(circle at 66% 70%, rgba(110,231,168,.22), transparent 42%),
+    linear-gradient(135deg, rgba(255,255,255,.092), rgba(255,255,255,.040)) !important;
+}
+
+.node-system-map {
+  border-color: rgba(110,231,168,.22) !important;
+  background:
+    radial-gradient(circle at 18% 72%, rgba(110,231,168,.17), transparent 28%),
+    radial-gradient(circle at 62% 57%, rgba(110,231,168,.12), transparent 34%),
+    linear-gradient(90deg, rgba(110,231,168,.090) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(110,231,168,.058) 1px, transparent 1px),
+    linear-gradient(135deg, transparent 0 calc(50% - .5px), rgba(110,231,168,.070) calc(50% - .5px) calc(50% + .5px), transparent calc(50% + .5px)),
+    rgba(0,0,0,.18) !important;
+  background-size: auto, auto, 44px 44px, 44px 44px, 88px 88px, auto;
+}
+
+.node-system-map::before {
+  border-color: rgba(110,231,168,.20) !important;
+  box-shadow: inset 0 0 42px rgba(110,231,168,.055);
+}
+
+.node-system-map::after {
+  border-color: rgba(110,231,168,.26) !important;
+  box-shadow: 0 0 34px rgba(110,231,168,.08);
+}
+
+.mesh-node.handled {
+  color: #d9ffe9;
+  border-color: rgba(110,231,168,.56) !important;
+  background: linear-gradient(180deg, rgba(110,231,168,.18), rgba(6,28,22,.34)) !important;
+  box-shadow: 0 0 0 1px rgba(110,231,168,.12), 0 14px 34px rgba(0,0,0,.22), 0 0 24px rgba(110,231,168,.14) !important;
+}
+
+.mesh-node.handled::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  background: rgba(110,231,168,.96);
+  box-shadow: 0 0 12px rgba(110,231,168,.75);
+}
+
+.mesh-node.n-report {
+  right: 15%;
+  top: 60%;
+  min-width: 96px;
+  border-top-color: rgba(110,231,168,.88) !important;
+}
+
+.mesh-node.n-task {
+  left: 11%;
+  bottom: 8%;
+  border-top-color: rgba(110,231,168,.82) !important;
+}
+
+.mesh-node.n-draft {
+  right: 7%;
+  bottom: 28%;
+}
+
+.mesh-line {
+  background: linear-gradient(90deg, transparent, rgba(110,231,168,.22), rgba(104,213,255,.22), transparent) !important;
+  box-shadow: 0 0 18px rgba(110,231,168,.10);
+}
+
+.ml-b,
+.ml-e {
+  background: linear-gradient(90deg, transparent, rgba(110,231,168,.34), rgba(110,231,168,.16), transparent) !important;
+  opacity: .86;
+}
+
+.mesh-dot {
+  background: rgba(142,255,188,.82) !important;
+  box-shadow: 0 0 18px rgba(110,231,168,.56), 0 0 2px rgba(255,255,255,.8) !important;
+}
+
+.md-d,
+.md-f,
+.md-i {
+  width: 10px;
+  height: 10px;
+  background: rgba(110,231,168,.96) !important;
+  box-shadow: 0 0 22px rgba(110,231,168,.72), 0 0 44px rgba(110,231,168,.20) !important;
+}
+
+.node-core {
+  background: radial-gradient(circle at 30% 20%, #fff9df, var(--warm) 30%, var(--progress) 62%, var(--trust) 100%) !important;
+  box-shadow: 0 0 0 12px rgba(255,209,102,.08), 0 0 60px rgba(110,231,168,.36), 0 0 52px rgba(104,213,255,.24) !important;
+}
+
+@media (max-width: 520px) {
+  .mesh-node.n-report {
+    right: 8%;
+    top: 62%;
+    min-width: 86px;
+  }
+  .mesh-node.n-draft { right: 6%; bottom: 24%; }
+}
+
+/* Report/Draft spacing refinement - 2026-05-21 */
+.mesh-node.n-review {
+  right: 24%;
+  bottom: 29%;
+}
+
+.mesh-node.n-draft {
+  right: 6%;
+  bottom: 19%;
+}
+
+.mesh-node.n-report {
+  right: 24%;
+  top: auto;
+  bottom: 7%;
+  min-width: 100px;
+}
+
+.ml-b {
+  left: 21%;
+  top: 61%;
+  width: 54%;
+  transform: rotate(-13deg);
+}
+
+.ml-e {
+  left: 12%;
+  top: 81%;
+  width: 62%;
+  transform: rotate(-27deg);
+}
+
+@media (max-width: 520px) {
+  .mesh-node.n-review { right: 24%; bottom: 30%; }
+  .mesh-node.n-draft { right: 5%; bottom: 18%; }
+  .mesh-node.n-report {
+    right: 23%;
+    top: auto;
+    bottom: 5%;
+    min-width: 88px;
+  }
+}
+
+/* Subtle green wayfinding refinement - 2026-05-21
+   Pull green back from the centre map. Use it as a quiet handled/progress cue that
+   naturally draws attention toward outreach/contact without reading as navigation. */
+:root {
+  --wayfind-green: #8cc9ad;
+  --wayfind-green-soft: rgba(140,201,173,.16);
+  --wayfind-green-quiet: rgba(140,201,173,.075);
+}
+
+.node-system {
+  border-color: rgba(205,220,236,.22) !important;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255,179,138,.16), transparent 38%),
+    radial-gradient(circle at 74% 22%, rgba(104,213,255,.15), transparent 40%),
+    radial-gradient(circle at 78% 82%, rgba(140,201,173,.085), transparent 44%),
+    linear-gradient(135deg, rgba(255,255,255,.086), rgba(255,255,255,.038)) !important;
+}
+
+.node-system-map {
+  border-color: rgba(205,220,236,.18) !important;
+  background:
+    radial-gradient(circle at 70% 74%, rgba(140,201,173,.080), transparent 34%),
+    radial-gradient(circle at 42% 48%, rgba(104,213,255,.095), transparent 34%),
+    linear-gradient(90deg, rgba(205,220,236,.062) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(205,220,236,.045) 1px, transparent 1px),
+    linear-gradient(135deg, transparent 0 calc(50% - .5px), rgba(140,201,173,.032) calc(50% - .5px) calc(50% + .5px), transparent calc(50% + .5px)),
+    rgba(0,0,0,.16) !important;
+  background-size: auto, auto, 44px 44px, 44px 44px, 88px 88px, auto;
+}
+
+.node-system-map::before {
+  border-color: rgba(140,201,173,.105) !important;
+  box-shadow: inset 0 0 34px rgba(140,201,173,.030);
+}
+
+.node-system-map::after {
+  border-color: rgba(104,213,255,.13) !important;
+  box-shadow: none;
+}
+
+.mesh-node.handled {
+  color: #d8f2e3;
+  border-color: rgba(140,201,173,.38) !important;
+  background: linear-gradient(180deg, rgba(140,201,173,.090), rgba(8,24,23,.18)) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.20), 0 0 16px rgba(140,201,173,.070) !important;
+}
+
+.mesh-node.handled::after {
+  right: 9px;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  opacity: .58;
+  background: rgba(140,201,173,.86);
+  box-shadow: 0 0 9px rgba(140,201,173,.38);
+}
+
+.mesh-node.n-report,
+.mesh-node.n-task {
+  border-top-color: rgba(140,201,173,.50) !important;
+}
+
+.mesh-line {
+  background: linear-gradient(90deg, transparent, rgba(104,213,255,.17), rgba(140,201,173,.105), transparent) !important;
+  box-shadow: none;
+  opacity: .58;
+}
+
+.ml-b,
+.ml-e {
+  background: linear-gradient(90deg, transparent, rgba(140,201,173,.17), rgba(104,213,255,.10), transparent) !important;
+  opacity: .62;
+}
+
+.mesh-dot {
+  width: 7px;
+  height: 7px;
+  background: rgba(205,220,236,.68) !important;
+  box-shadow: 0 0 14px rgba(104,213,255,.22), 0 0 2px rgba(255,255,255,.55) !important;
+}
+
+.md-d,
+.md-f,
+.md-i {
+  width: 8px;
+  height: 8px;
+  background: rgba(140,201,173,.80) !important;
+  box-shadow: 0 0 15px rgba(140,201,173,.32), 0 0 30px rgba(140,201,173,.07) !important;
+}
+
+.node-core {
+  background: radial-gradient(circle at 30% 20%, #fff9df, var(--warm) 36%, rgba(140,201,173,.86) 66%, var(--trust) 100%) !important;
+  box-shadow: 0 0 0 12px rgba(255,209,102,.075), 0 0 48px rgba(104,213,255,.26), 0 0 28px rgba(140,201,173,.12) !important;
+}
+
+/* Quiet path toward outreach/contact: not an arrow, just a faint handled-progress trail. */
+#offer,
+#industries,
+#contact {
+  position: relative;
+}
+
+#offer::after,
+#industries::after {
+  content: "";
+  position: absolute;
+  right: clamp(22px, 6vw, 92px);
+  bottom: -50px;
+  width: 1px;
+  height: 68px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(140,201,173,.18), transparent);
+  box-shadow: 0 0 18px rgba(140,201,173,.055);
+  opacity: .72;
+}
+
+#offer .offer-list div:nth-child(4),
+#industries .card:nth-child(2),
+#industries .card:nth-child(5),
+#industries .card:nth-child(7) {
+  border-top-color: rgba(140,201,173,.26) !important;
+}
+
+#offer .offer-list div:nth-child(4)::before,
+#industries .card:nth-child(2)::before,
+#industries .card:nth-child(5)::before,
+#industries .card:nth-child(7)::before {
+  background: linear-gradient(90deg, rgba(140,201,173,.45), rgba(104,213,255,.18), transparent) !important;
+  opacity: .42 !important;
+}
+
+#contact.cta {
+  border-color: rgba(140,201,173,.24) !important;
+  background:
+    radial-gradient(circle at 52% 100%, rgba(140,201,173,.13), transparent 42%),
+    radial-gradient(circle at 18% 0%, rgba(255,209,102,.13), transparent 38%),
+    radial-gradient(circle at 90% 16%, rgba(104,213,255,.12), transparent 42%),
+    linear-gradient(135deg, rgba(255,255,255,.082), rgba(255,255,255,.040)) !important;
+}
+
+#contact.cta::before {
+  background: linear-gradient(90deg, rgba(255,209,102,.62), rgba(104,213,255,.32), rgba(140,201,173,.42)) !important;
+  opacity: .66 !important;
+}
+
+#contact .button.primary,
+.nav-cta,
+.send-choice[data-send="direct"] {
+  box-shadow: 6px 7px 0 rgba(0,0,0,.16), 0 0 0 1px rgba(140,201,173,.13), 0 16px 42px rgba(140,201,173,.075) !important;
+}
+
+.drawer-status,
+.send-choice[data-send="direct"] span {
+  color: var(--wayfind-green) !important;
+}
+
+@media (max-width: 760px) {
+  #offer::after,
+  #industries::after {
+    right: 24px;
+    height: 48px;
+    bottom: -36px;
+    opacity: .46;
+  }
+}
+
+/* Mobile AI map breathing room after subtle green pass - 2026-05-21 */
+@media (max-width: 520px) {
+  .node-system-map {
+    min-height: 430px !important;
+  }
+  .mesh-node {
+    min-width: 62px;
+    padding: 7px 8px;
+    font-size: 10px;
+    letter-spacing: .065em;
+  }
+  .node-core {
+    width: 88px !important;
+    height: 72px !important;
+  }
+  .node-core span { font-size: 9px; margin-top: -24px; }
+  .n-risk { left: 12%; bottom: 30%; }
+  .n-memory { left: 43%; bottom: 19%; }
+  .mesh-node.n-review { right: 12%; bottom: 32%; }
+  .mesh-node.n-draft { right: 4%; bottom: 17%; }
+  .mesh-node.n-report { right: 30%; bottom: 4%; min-width: 76px; }
+  .mesh-node.n-task { left: 8%; bottom: 6%; }
+  .n-team { left: 31%; top: 68%; }
+}
+
+/* Micro green pop overlay - old green preserved - 2026-05-21
+   Preserve the previous subtle wayfinding green exactly on the main elements. Only tiny
+   dots, rails, and status text get a near-invisible halo so the green breathes a bit. */
+:root {
+  --green-micro-pop: rgba(140,201,173,.045);
+}
+
+.mesh-node.handled::after,
+.md-d,
+.md-f,
+.md-i,
+#offer::after,
+#industries::after,
+.signal-card.handled::before,
+#contact.cta::before,
+#offer .offer-list div:nth-child(4)::before,
+#industries .card:nth-child(2)::before,
+#industries .card:nth-child(5)::before,
+#industries .card:nth-child(7)::before {
+  filter: drop-shadow(0 0 2px var(--green-micro-pop));
+}
+
+.drawer-status,
+.send-choice[data-send="direct"] span {
+  text-shadow: 0 0 4px rgba(140,201,173,.035);
+}
+
+@media (max-width: 520px) {
+  .mesh-node.handled::after,
+  .md-d,
+  .md-f,
+  .md-i,
+  #offer::after,
+  #industries::after,
+  .signal-card.handled::before,
+  #contact.cta::before,
+  #offer .offer-list div:nth-child(4)::before,
+  #industries .card:nth-child(2)::before,
+  #industries .card:nth-child(5)::before,
+  #industries .card:nth-child(7)::before {
+    filter: drop-shadow(0 0 1.5px rgba(140,201,173,.030));
+  }
+}
+
+/* Anchor scroll clearance for sticky nav - unique workflow refinement - 2026-05-21 */
+[id] { scroll-margin-top: 94px; }
+@media (max-width: 520px) {
+  [id] { scroll-margin-top: 76px; }
+}
+
+/* Keep final contact anchor clear above sticky nav near page bottom - 2026-05-21 */
+#contact { scroll-margin-top: 122px; }
+footer.section-shell { padding-bottom: 92px; }
+@media (max-width: 520px) {
+  #contact { scroll-margin-top: 112px; }
+  footer.section-shell { padding-bottom: 142px; }
+}
