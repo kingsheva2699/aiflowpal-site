@@ -1,13 +1,13 @@
 # AI FlowPal
 
-AI FlowPal builds unique AI workflow systems for unique businesses. The service starts by mapping how each business actually works - customers, tools, team rules, approvals, and promises - then uses AI as leverage for monitoring, summaries, drafts, routing, evidence notes, and review queues while human judgment stays in control.
+AI FlowPal builds custom customer-work AI tools that help service teams stay ahead of requests, follow-up, status updates, reminders, reporting, and reviewed next steps. The service starts by mapping how each business actually works - customers, tools, team rules, review steps, and promises - then uses AI to organize information, prepare summaries, reminders, drafts, routing, notes, and review lists while the team stays in control.
 
 Website: https://aiflowpal.com/
 Contact: hello@aiflowpal.com
 
 Key pages:
-- https://aiflowpal.com/ - unique AI systems for unique businesses
-- https://aiflowpal.com/about/ - company profile and entity page for AI FlowPal custom AI workflow systems
+- https://aiflowpal.com/ - customer-work AI tools for real business processes
+- https://aiflowpal.com/about/ - company profile and entity page for AI FlowPal custom AI workflow tools
 - https://aiflowpal.com/ai-workflow-automation-for-small-business/ - small business workflow fit repair
 - https://aiflowpal.com/customer-follow-up-automation/ - customer follow-up workflow repair
 - https://aiflowpal.com/ai-automation-consultant-toronto/ - Toronto AI automation consulting
@@ -15,4 +15,4 @@ Key pages:
 - https://aiflowpal.com/travel-agency-ai-workflow/ - travel agency workflow support
 - https://aiflowpal.com/real-estate-lead-follow-up-automation/ - real estate lead follow-up workflow support
 
-Guardrail: AI FlowPal focuses on workflow/admin support with human approval. It does not provide legal, immigration, medical, tax, insurance, travel, or financial advice. External/customer-facing actions and sensitive decisions should stay human-reviewed.
+Boundary: AI FlowPal focuses on workflow/admin support with team review where risk matters. It does not provide legal, immigration, medical, tax, insurance, travel, or financial advice. External/customer-facing actions and sensitive decisions should stay reviewed by the business.
