@@ -12,3 +12,7 @@ function draft(provider){if(!form.reportValidity())return;const company=form.ele
 form.addEventListener('submit',e=>{e.preventDefault();draft('email')});document.querySelector('#gmail').addEventListener('click',()=>draft('gmail'));
 
 document.querySelector('#outlook').addEventListener('click',()=>draft('outlook'));
+
+const methods=[...document.querySelectorAll('.method-tabs [role="tab"]')];
+function selectMethod(i){methods.forEach((b,k)=>{b.setAttribute('aria-selected',String(k===i));b.tabIndex=k===i?0:-1;document.getElementById(b.getAttribute('aria-controls')).hidden=k!==i;});}
+methods.forEach((b,i)=>{b.addEventListener('click',()=>selectMethod(i));b.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const n=e.key==='Home'?0:e.key==='End'?1:1-i;selectMethod(n);methods[n].focus();}});});
