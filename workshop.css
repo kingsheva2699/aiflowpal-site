@@ -13,3 +13,19 @@
 .email-options{flex-direction:row;flex-wrap:wrap;gap:10px}.email-options .button{font-size:13px;min-height:45px;padding:10px 17px}
 
 .contact-methods{min-width:0}.method-tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:24px;gap:7px}.method-tabs button{border:0;background:transparent;color:var(--muted);padding:11px 20px;font-size:14px}.method-tabs button[aria-selected=true]{color:var(--ink);border-bottom:3px solid var(--ink);font-weight:600}#direct-contact{width:100%;height:740px;border:0;display:block;background:#eef1e8}[hidden]{display:none!important}#email-panel{padding-top:3px}
+
+/* Preview-only readability and contact clarity polish. */
+.brand-sub{font-size:11px;letter-spacing:.45px}
+.eyebrow,.hero .eyebrow,.panel-label,.fragments small,dt{font-size:12px}
+.fragments small{font-weight:600;letter-spacing:.65px}
+.before-foot,.human-rule,.example-note{font-size:13px;line-height:1.65}
+.contact-privacy{margin-top:24px;border-color:#c8d1c6}
+.contact-privacy summary{font-size:14px;gap:15px;line-height:1.5}
+.contact .contact-privacy p{max-width:none;font-size:14px;line-height:1.65;color:var(--muted)}
+.contact-privacy a{text-decoration:underline;text-underline-offset:3px}
+.contact .form-note{max-width:none;font-size:13px;line-height:1.6}
+.method-tabs button{min-height:44px}
+@media(max-width:600px){.scenario-tabs button span{font-size:14px}.hero .eyebrow{font-size:11px;letter-spacing:1px}}
+
+/* Small-text contrast meets WCAG AA on the current surfaces. */
+.hero .eyebrow{color:#80603d}dt{color:#53694f}
